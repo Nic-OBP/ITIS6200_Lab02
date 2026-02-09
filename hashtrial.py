@@ -37,6 +37,9 @@ def validate_hash(directory_path):
     with open(HASH_DB, 'r') as f:
         stored_data = json.load(f)
 
+    if not Path(directory_path).exists:
+        print(f"directory {directory_path} does not exist.")
+        return 0
     current_data = traverse_directory(directory_path)
     
     # sort by hashes instead of names
